@@ -1,0 +1,25 @@
+---
+title: "auto_ml_workshop"
+---
+
+# Automated Machine Learning with R and h2o
+
+
+Workshop 3 (HS120) @ Swiss Days of Official Statistics, 30.08.2023-01.09.2023, Universität Basel
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse, warn.conflicts = FALSE))
+suppressPackageStartupMessages(library(h2o, warn.conflicts = FALSE))
+```
+
+## 0. Get the data
+
+We will use an OGD-Dataset for this workshop, available at [data.bl.ch](data.bl.ch) 
+
+```{r}
+kgwr <- read_delim("https://data.bl.ch/api/explore/v2.1/catalog/datasets/12160/exports/csv?lang=de&timezone=Europe%2FParis&use_labels=true&delimiter=%3B", delim = ";", n_max = 1000)
+
+kgwr <- kgwr %>%
+  janitor::clean_names()
+head(kgwr)
+```
